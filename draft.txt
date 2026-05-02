@@ -1,1 +1,2 @@
 Database password: ServiceOriented@123
+Database Connection string: postgresql://postgres:ServiceOriented@123@db.jsyztrpjajfaavajmvux.supabase.co:5432/postgres
