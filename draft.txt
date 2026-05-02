@@ -1,2 +1,0 @@
-mongodb+srv://restaurant_app_user:246810@cluster0.iwo07sh.mongodb.net/
-echo "MONGODB_URI=mongodb+srv://restaurant_app_user:246810@cluster0.iwo07sh.mongodb.net/" > .env
