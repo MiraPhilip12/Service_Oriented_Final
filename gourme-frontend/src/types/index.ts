@@ -29,9 +29,16 @@ export interface Order {
   customerId: string;
   totalAmount: number;
   status: string;
+  paymentMethod: string;
+  paymentStatus: string;
   deliveryAddress: string;
+  deliveryLat?: number;
+  deliveryLng?: number;
+  deliveryPersonId?: string;
+  estimatedDeliveryTime?: string | null;
+  actualDeliveryTime?: string | null;
   createdAt: string;
-  estimatedDeliveryTime: string | null;
+  updatedAt?: string;
 }
 
 export interface DeliveryStatus {

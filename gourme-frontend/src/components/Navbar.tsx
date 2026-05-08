@@ -2,7 +2,13 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
-import { ShoppingCartIcon, UserIcon, HomeIcon, ClipboardDocumentListIcon } from '@heroicons/react/24/outline';
+import { 
+  ShoppingCartIcon, 
+  UserIcon, 
+  HomeIcon, 
+  ClipboardDocumentListIcon,
+  ChartBarIcon
+} from '@heroicons/react/24/outline';
 
 const Navbar: React.FC = () => {
   const { user, logout } = useAuth();
@@ -41,6 +47,14 @@ const Navbar: React.FC = () => {
                   My Orders
                 </Link>
               </>
+            )}
+
+            {/* Admin Links */}
+            {user && user.role === 'admin' && (
+              <Link to="/admin" className="hover:text-gourme-light transition font-semibold">
+                <ChartBarIcon className="h-5 w-5 inline mr-1" />
+                Admin Dashboard
+              </Link>
             )}
 
             {user ? (

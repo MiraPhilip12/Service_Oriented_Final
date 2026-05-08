@@ -53,4 +53,34 @@ export const deliveryApi = {
   getStatus: (orderId: number) => api.get(`/delivery/status/${orderId}`),
 };
 
+// Admin APIs
+export const adminApi = {
+  // Menu Management
+  getAllMenuItems: () => api.get('/menu'),
+  createMenuItem: (data: any) => api.post('/menu', data),
+  updateMenuItem: (id: number, data: any) => api.put(`/menu/${id}`, data),
+  deleteMenuItem: (id: number) => api.delete(`/menu/${id}`),
+  
+  // Order Management
+  getAllOrders: () => api.get('/orders'),
+  updateOrderStatus: (id: number, status: string) => api.put(`/orders/${id}/status`, { status }),
+  
+  // Delivery Management
+  getAllDeliveryPersonnel: () => api.get('/delivery/personnel'),
+  createDeliveryPersonnel: (data: any) => api.post('/delivery/personnel', data),
+  updateDeliveryLocation: (id: number, lat: number, lng: number) => 
+    api.put(`/delivery/personnel/${id}/location`, { lat, lng }),
+  toggleDeliveryActive: (id: number, isActive: boolean) => 
+    api.put(`/delivery/personnel/${id}/active`, { isActive }),
+  
+  // Feedback Management
+  getAllFeedback: () => api.get('/feedback'),
+  
+  // Statistics
+  getSalesTotal: () => api.get('/orders/stats/sales'),
+  getOrderCount: () => api.get('/orders/stats/count'),
+  getDeliveryStats: () => api.get('/delivery/stats'),
+  getAverageRating: () => api.get('/feedback/stats/average'),
+};
+
 export default api;

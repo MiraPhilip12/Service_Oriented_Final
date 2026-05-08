@@ -8,11 +8,19 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import CartPage from './pages/CartPage';
 import MyOrdersPage from './pages/MyOrdersPage';
+import AdminDashboard from './pages/admin/AdminDashboard';
 
-const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const ProtectedRoute: React.FC<{ children: React.ReactNode; adminOnly?: boolean }> = ({ 
+  children, 
+  adminOnly = false 
+}) => {
   const { user, isLoading } = useAuth();
   if (isLoading) return null;
-  return user ? <>{children}</> : <Navigate to="/login" />;
+  
+  if (!user) return <Navigate to="/login" />;
+  if (adminOnly && user.role !== 'admin') return <Navigate to="/" />;
+  
+  return <>{children}</>;
 };
 
 const AppContent: React.FC = () => {
@@ -39,6 +47,14 @@ const AppContent: React.FC = () => {
           element={
             <ProtectedRoute>
               <MyOrdersPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/*"
+          element={
+            <ProtectedRoute adminOnly={true}>
+              <AdminDashboard />
             </ProtectedRoute>
           }
         />
