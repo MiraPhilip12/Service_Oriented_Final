@@ -1,0 +1,230 @@
+{
+  "info": {
+    "_postman_id": "64d1f033-db54-4bd6-9066-5fdf1a47d8cc",
+    "name": "Gourme Postman Collection",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49531797",
+    "_collection_link": "https://go.postman.co/collection/49531797-64d1f033-db54-4bd6-9066-5fdf1a47d8cc?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth Service",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"test@example.com\",\r\n  \"password\": \"123456\",\r\n  \"fullName\": \"Test User\",\r\n  \"role\": \"customer\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Order Status",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "x-user-id",
+            "value": "user_1778203287411_2dorgmirk",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"delivered\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/orders/1/status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "orders",
+            "1",
+            "status"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delivery Service",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/delivery/complete/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "delivery",
+            "complete",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Admin Dashboard",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"admin@gourme.com\",\r\n  \"password\": \"admin123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Menu Items Creation",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyXzE3NzgyNjIwOTMwNTBfcXhxcTQ0cjN2IiwiZW1haWwiOiJhZG1pbkBnb3VybWUuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzc4Mjc2OTAxLCJleHAiOjE3Nzg4ODE3MDF9.ESgzVV-e0Mo81czhbKdmiXav6N6TSarighvI_HVTKKU",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Italian Soda\",\r\n  \"description\": \"Sparkling water with your choice of fruit syrup - strawberry, raspberry, or peach\",\r\n  \"price\": 5.99,\r\n  \"category\": \"Beverages\",\r\n  \"imageUrl\": \"/images/soda.jpg\",\r\n  \"isAvailable\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/menu",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "menu"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Menu Update",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyXzE3NzgyNjIwOTMwNTBfcXhxcTQ0cjN2IiwiZW1haWwiOiJhZG1pbkBnb3VybWUuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzc4Mjc2OTAxLCJleHAiOjE3Nzg4ODE3MDF9.ESgzVV-e0Mo81czhbKdmiXav6N6TSarighvI_HVTKKU",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Italian Soda\",\r\n  \"description\": \"Sparkling water with your choice of fruit syrup - strawberry, raspberry, or peach\",\r\n  \"price\": 5.99,\r\n  \"category\": \"Beverages\",\r\n  \"imageUrl\": \"https://images.unsplash.com/photo-1546173159-315724a31696?w=500&h=400&fit=crop\",\r\n  \"isAvailable\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/menu",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "menu"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
