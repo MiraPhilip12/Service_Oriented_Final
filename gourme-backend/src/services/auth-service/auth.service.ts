@@ -6,9 +6,6 @@ import * as bcrypt from 'bcrypt';
 import { User } from '../../entities/user.entity';
 import { RegisterDto, LoginDto, LoginResponseDto } from './auth.dto';
 
-// Since Supabase handles auth, we'll simulate with JWT
-// In production, use Supabase Auth client
-
 @Injectable()
 export class AuthService {
   constructor(
@@ -28,7 +25,6 @@ export class AuthService {
     }
 
     // Generate a simple ID (in production use UUID from Supabase)
-    const hashedPassword = await bcrypt.hash(registerDto.password, 10);
     const userId = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
     const newUser = this.userRepository.create({
@@ -84,7 +80,8 @@ export class AuthService {
     };
   }
 
-  async validateUser(userId: string): Promise<User> {
+  async validateUser(userId: string): Promise<User | null> {
+    // Fixed: Returns User OR null
     return this.userRepository.findOne({ where: { id: userId } });
   }
 }

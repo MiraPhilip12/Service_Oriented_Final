@@ -2,13 +2,13 @@ import { Entity, Column, PrimaryColumn, CreateDateColumn } from 'typeorm';
 
 @Entity('profiles')
 export class User {
-  @PrimaryColumn('uuid')
+  @PrimaryColumn()
   id: string;
 
   @Column({ unique: true })
   email: string;
 
-  @Column({ name: 'full_name', nullable: true })
+  @Column({ nullable: true })
   fullName: string;
 
   @Column({ nullable: true })
@@ -26,6 +26,6 @@ export class User {
   @Column({ default: 'customer' })
   role: string;
 
-  @CreateDateColumn({ name: 'created_at' })
+  @CreateDateColumn()
   createdAt: Date;
 }
